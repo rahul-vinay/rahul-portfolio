@@ -125,7 +125,8 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['JavaScript (ES6+)', 'TypeScript', 'React', 'Eleventy', 'Node.js', 'WordPress'];
+  const skills = ['C#', 'Python', 'SQL', 'Machine Learning', 'Data Analysis',
+    'Pandas', 'NLP', 'Deep Learning', 'Streamlit', 'Visual Studio'];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -135,30 +136,23 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! My name is Brittany and I enjoy creating things that live on the internet. My
-              interest in web development started back in 2012 when I decided to try editing custom
-              Tumblr themes — turns out hacking together a custom reblog button taught me a lot
-              about HTML &amp; CSS!
+              Hello! My name is Rahul Vinay, and I'm a passionate software engineer specializing in
+              Data Science, Machine Learning, and Artificial Intelligence. With a strong background 
+              in Electronics and Communication Engineering and a Master’s in Computer Science, I bring
+              a unique perspective to my work, bridging the gap between hardware and advanced software systems.
             </p>
 
             <p>
-              Fast-forward to today, and I’ve had the privilege of working at{' '}
-              <a href="https://us.mullenlowe.com/">an advertising agency</a>,{' '}
-              <a href="https://starry.com/">a start-up</a>,{' '}
-              <a href="https://www.apple.com/">a huge corporation</a>, and{' '}
-              <a href="https://scout.camd.northeastern.edu/">a student-led design studio</a>. My
-              main focus these days is building accessible, inclusive products and digital
-              experiences at <a href="https://upstatement.com/">Upstatement</a> for a variety of
-              clients.
+              I have experience working with various technologies to build data-driven solutions, particularly
+              in fields like NLP, computer vision, and data visualization. I'm deeply passionate about creating
+              impactful, real-world solutions, from predictive analytics to automated tools for intelligent decision-making.
             </p>
 
             <p>
-              I also recently{' '}
-              <a href="https://www.newline.co/courses/build-a-spotify-connected-app">
-                launched a course
-              </a>{' '}
-              that covers everything you need to build a web app with the Spotify API using Node
-              &amp; React.
+             Currently, I'm focusing on projects that leverage AI and ML for innovative applications,
+             including real-time sentiment analysis, image captioning with attention mechanisms, and
+             salary prediction using data visualization tools. My goal is to push the boundaries of
+             what's possible with technology, making complex systems more accessible and intuitive.
             </p>
 
             <p>Here are a few technologies I’ve been working with recently:</p>
@@ -173,11 +167,11 @@ const About = () => {
           <div className="wrapper">
             <StaticImage
               className="img"
-              src="../../images/me.jpg"
+              src="../../images/rahul_vinay.jpg"
               width={500}
               quality={95}
               formats={['AUTO', 'WEBP', 'AVIF']}
-              alt="Headshot"
+              alt="Rahul Vinay"
             />
           </div>
         </StyledPic>
