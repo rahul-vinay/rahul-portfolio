@@ -3,6 +3,7 @@ title: "Natural Language Processing Intern"
 company: "DRDO - Center for Artificial Intelligence and Robotics"
 location: "Bangalore, India"
 range: "Feb 2022 – Apr 2022"
+url: "https://drdo.gov.in/drdo/labs-and-establishments/centre-artificial-intelligence-robotics-cair"
 ---
 
 - Implemented 'Snowball Relation Extraction' model in Python, achieving 87% accuracy and 75% F1 score on unstructured text using semi-supervised learning.
