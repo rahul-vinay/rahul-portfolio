@@ -9,6 +9,7 @@ tech:
   - Deep Learning
   - Attention Mechanism
   - Computer Vision
+company: ''
 showInProjects: true
 ---
 
