@@ -305,31 +305,31 @@ const StyledProject = styled.li`
 
 const Featured = () => {
   const data = useStaticQuery(graphql`
-  {
-    featured: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/content/featured/" } }
-      sort: { fields: [frontmatter___date], order: ASC }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            title
-            cover {
-              childImageSharp {
-                gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+    {
+      featured: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/featured/" } }
+        sort: { fields: [frontmatter___date], order: ASC }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              title
+              cover {
+                childImageSharp {
+                  gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                }
               }
+              tech
+              github
+              external
+              cta
             }
-            tech
-            github
-            external
-            cta
+            html
           }
-          html
         }
       }
     }
-  }
-`);
+  `);
 
   const featuredProjects = data.featured.edges.filter(({ node }) => node);
   const revealTitle = useRef(null);
@@ -337,7 +337,10 @@ const Featured = () => {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion) {
+      return;
+    }
+
     sr.reveal(revealTitle.current, srConfig());
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
   }, []);
@@ -352,17 +355,23 @@ const Featured = () => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { title, tech, github, cover, cta } = frontmatter;
+            const { external, title, tech, github, cover, cta } = frontmatter;
+            const image = getImage(cover);
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
                 <div className="project-content">
                   <div>
                     <p className="project-overline">Featured Project</p>
+
                     <h3 className="project-title">
-                      <a href={github || '#'}>{title}</a>
+                      <a href={external}>{title}</a>
                     </h3>
-                    <div className="project-description" dangerouslySetInnerHTML={{ __html: html }} />
+
+                    <div
+                      className="project-description"
+                      dangerouslySetInnerHTML={{ __html: html }}
+                    />
 
                     {tech.length && (
                       <ul className="project-tech-list">
@@ -383,15 +392,20 @@ const Featured = () => {
                           <Icon name="GitHub" />
                         </a>
                       )}
+                      {external && !cta && (
+                        <a href={external} aria-label="External Link" className="external">
+                          <Icon name="External" />
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
 
-                {cover && (
-                  <div className="project-image">
-                    <img src={cover} alt={title} className="img" />
-                  </div>
-                )}
+                <div className="project-image">
+                  <a href={external ? external : github ? github : '#'}>
+                    <GatsbyImage image={image} alt={title} className="img" />
+                  </a>
+                </div>
               </StyledProject>
             );
           })}
