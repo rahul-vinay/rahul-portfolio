@@ -2,7 +2,6 @@
 title: "CAPTCHA Validator"
 tech: ["Python", "Flask", "Machine Learning", "Computer Vision", "Image Processing"]
 github: "https://github.com/rahul-vinay/Captcha_trial"
-#external: "https://link-to-project-demo.com"
 showInProjects: true
 ---
 
