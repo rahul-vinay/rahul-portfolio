@@ -1,7 +1,14 @@
 ---
+date: '2024-08-01'
 title: "ShowAttendAndTell: Neural Image Captioning"
-tech: ["Python", "PyTorch", "Deep Learning", "Attention Mechanism", "Computer Vision"]
-github: "https://github.com/rahul-vinay/ShowAttendAndTell"
+github: ''
+external: ''
+tech: 
+  - Python
+  - PyTorch
+  - Deep Learning
+  - Attention Mechanism
+  - Computer Vision
 showInProjects: true
 ---
 
