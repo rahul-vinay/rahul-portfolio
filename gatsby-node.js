@@ -6,7 +6,15 @@
 
 const path = require('path');
 const _ = require('lodash');
-
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  createTypes(`
+    type MarkdownRemarkFrontmatter {
+      ios: String
+      android: String
+    }
+  `);
+};
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
   const postTemplate = path.resolve(`src/templates/post.js`);
