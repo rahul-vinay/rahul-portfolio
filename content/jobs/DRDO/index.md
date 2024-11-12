@@ -1,4 +1,5 @@
 ---
+date: '2022-02-01'
 title: "Natural Language Processing Intern"
 company: "DRDO - Center for Artificial Intelligence and Robotics"
 location: "Bangalore, India"
