@@ -294,7 +294,7 @@ const StyledProject = styled.li`
       filter: grayscale(100%) contrast(1) brightness(90%);
 
       @media (max-width: 768px) {
-        object-fit: cover;
+        object-fit: images;
         width: auto;
         height: 100%;
         filter: grayscale(100%) contrast(1) brightness(50%);
@@ -355,8 +355,8 @@ const Featured = () => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, cta } = frontmatter;
-            const image = getImage(cover);
+            const { external, title, tech, github, images, cta } = frontmatter;
+            const image = getImage(images);
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
