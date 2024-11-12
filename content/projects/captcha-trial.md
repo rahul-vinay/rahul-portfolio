@@ -1,7 +1,15 @@
 ---
+date: '2024-09-15'
 title: "CAPTCHA Validator"
-tech: ["Python", "Flask", "Machine Learning", "Computer Vision", "Image Processing"]
 github: "https://github.com/rahul-vinay/Captcha_trial"
+external: ''
+tech: 
+  - Python
+  - Flask
+  - Machine Learning
+  - Computer Vision
+  - Image Processing
+company: ''
 showInProjects: true
 ---
 
