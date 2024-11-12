@@ -321,31 +321,9 @@ const Featured = () => {
               }
               tech
               github
-              external
-              cta
-            }
-            html
-          }
-        }
-      }
-    }
-  `);
-
- const Featured = () => {
-  const data = useStaticQuery(graphql`
-    {
-      featured: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/featured/" } }
-        sort: { fields: [frontmatter___date], order: ASC }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              cover
-              tech
-              github
-              external
+              external {
+                publicURL
+              }
               cta
             }
             html
@@ -389,7 +367,7 @@ const Featured = () => {
                     <p className="project-overline">Featured Project</p>
 
                     <h3 className="project-title">
-                      <a href={external || github || '#'}>{title}</a>
+                      <a href={external?.publicURL || github || '#'}>{title}</a>
                     </h3>
 
                     <div
@@ -416,8 +394,8 @@ const Featured = () => {
                           <Icon name="GitHub" />
                         </a>
                       )}
-                      {external && !cta && (
-                        <a href={external} aria-label="External Link" className="external">
+                      {external?.publicURL && !cta && (
+                        <a href={external.publicURL} aria-label="External Link" className="external">
                           <Icon name="External" />
                         </a>
                       )}
@@ -426,7 +404,7 @@ const Featured = () => {
                 </div>
 
                 <div className="project-image">
-                  <a href={external || github || '#'}>
+                  <a href={external?.publicURL || github || '#'}>
                     {image ? (
                       <GatsbyImage image={image} alt={title} className="img" />
                     ) : (
