@@ -1,8 +1,8 @@
 ---
 title: "DevSalaryInsights: Software Developer Salary Prediction"
 tech: ["Python", "Streamlit", "Machine Learning", "Data Analysis", "Stack Overflow Survey"]
-github: "https://github.com/yourusername/DevSalaryInsights"
-external: "https://link-to-project-demo.com"
+github: "https://github.com/rahul-vinay/DevSalaryInsights"
+#external: "https://link-to-project-demo.com"
 showInProjects: true
 ---
 
