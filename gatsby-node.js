@@ -13,6 +13,8 @@ exports.createSchemaCustomization = ({ actions }) => {
     type MarkdownRemarkFrontmatter {
       cover: File @fileByRelativePath
       external: String
+      ios: String
+      android: String
     }
   `);
 };
