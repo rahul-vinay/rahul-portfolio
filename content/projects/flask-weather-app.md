@@ -1,7 +1,14 @@
 ---
+date: '2024-10-03'
 title: "Flask Weather App"
-tech: ["Python", "Flask",  "OpenWeatherMap API", "Web Development"]
 github: "https://github.com/rahul-vinay/flask-weather-app"
+external: ''
+tech:
+  - Python
+  - Flask
+  - OpenWeatherMap API
+  - Web Development
+company: ''
 showInProjects: true
 ---
 
