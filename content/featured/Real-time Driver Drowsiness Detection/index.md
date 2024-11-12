@@ -3,7 +3,7 @@ date: '3'
 title: 'Real-time Driver Drowsiness Detection and Safety Alerts System'
 cover: './driverdrowsiness.jpg'
 #github: 
-external: './report.pdf'
+external: './Capstone-Report.pdf'
 tech:
   - Python
   - OpenCV
