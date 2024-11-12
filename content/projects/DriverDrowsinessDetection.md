@@ -1,7 +1,7 @@
 ---
 title: "Real-time Driver Drowsiness Detection"
 tech: ["Python", "OpenCV", "Embedded Systems", "Raspberry Pi", "Computer Vision"]
-github: "https://github.com/yourusername/DriverDrowsinessDetection"
+#github: "https://github.com/rahul-vinay/DriverDrowsinessDetection"
 external: "https://link-to-project-demo.com"
 showInProjects: true
 ---
