@@ -11,4 +11,6 @@ tech:
   - Data Analysis
   - Scikit-Learn
 
+---
+
 DevSalaryInsights is a Streamlit application for predicting software developer salaries based on education, experience, and location. Uses Stack Overflow Developer Survey data to provide insights into salary distributions across various demographics.
