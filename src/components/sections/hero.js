@@ -65,10 +65,8 @@ const Hero = () => {
   const four = (
     <>
       <p>
-        I’m a Computer Science graduate student specializing in AI, Machine Learning, and NLP. I'm passionate about developing
-        innovative solutions that bridge the gap between hardware and software.
-        Currently, I’m focused on building impactful data-driven applications and exploring new ways
-        to enhance machine learning models.
+        I’m a Computer Science grad student with a passion for AI, Machine Learning, and NLP. I love creating data-driven applications that blend hardware and software seamlessly,
+        always on the hunt for fresh ways to push ML boundaries and make a real impact.
       </p>
     </>
   );
