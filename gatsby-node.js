@@ -13,6 +13,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     type MarkdownRemarkFrontmatter {
       date: String
       cover: File @fileByRelativePath
+      tech: [String] # Applies only to projects where tech should be in array format
       github: String
       external: String
       cta: String
