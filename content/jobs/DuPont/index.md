@@ -1,4 +1,5 @@
 ---
+date: '2024-05-15'
 title: "Software Engineer Co-op"
 company: "DuPont - Spectrum Plastics Group"
 location: "Hermann, USA"
