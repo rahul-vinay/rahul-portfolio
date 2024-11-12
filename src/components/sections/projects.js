@@ -166,32 +166,29 @@ const StyledProject = styled.li`
 `;
 
 const Projects = () => {
- const data = useStaticQuery(graphql`
-  {
-    featured: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/content/featured/" } }
-      sort: { fields: [frontmatter___date], order: ASC }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            title
-            cover {
-              childImageSharp {
-                gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
-              }
+  const data = useStaticQuery(graphql`
+    query {
+      projects: allMarkdownRemark(
+        filter: {
+          fileAbsolutePath: { regex: "/content/projects/" }
+          frontmatter: { showInProjects: { ne: false } }
+        }
+        sort: { fields: [frontmatter___date], order: DESC }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              title
+              tech
+              github
+              external
             }
-            tech
-            github
-            external
-            cta
+            html
           }
-          html
         }
       }
     }
-  }
-`);
+  `);
 
   const [showMore, setShowMore] = useState(false);
   const revealTitle = useRef(null);
@@ -200,7 +197,10 @@ const Projects = () => {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion) {
+      return;
+    }
+
     sr.reveal(revealTitle.current, srConfig());
     sr.reveal(revealArchiveLink.current, srConfig());
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
@@ -242,7 +242,7 @@ const Projects = () => {
           </div>
 
           <h3 className="project-title">
-            <a href={external || github || '#'} target="_blank" rel="noreferrer">
+            <a href={external} target="_blank" rel="noreferrer">
               {title}
             </a>
           </h3>
@@ -310,4 +310,3 @@ const Projects = () => {
 };
 
 export default Projects;
-
