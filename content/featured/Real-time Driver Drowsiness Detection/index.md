@@ -2,7 +2,7 @@
 date: '3'
 title: 'Real-time Driver Drowsiness Detection and Safety Alerts System'
 cover: './driverdrowsiness.jpg'
-github: 
+github: ''
 external: './Capstone-Report.pdf'
 tech:
   - Python
