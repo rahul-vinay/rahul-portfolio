@@ -294,7 +294,7 @@ const StyledProject = styled.li`
       filter: grayscale(100%) contrast(1) brightness(90%);
 
       @media (max-width: 768px) {
-        object-fit: images;
+        object-fit: cover;
         width: auto;
         height: 100%;
         filter: grayscale(100%) contrast(1) brightness(50%);
@@ -314,7 +314,7 @@ const Featured = () => {
           node {
             frontmatter {
               title
-              images {
+              cover {
                 childImageSharp {
                   gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                 }
@@ -355,8 +355,8 @@ const Featured = () => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, images, cta } = frontmatter;
-            const image = getImage(images);
+            const { external, title, tech, github, cover, cta } = frontmatter;
+            const image = getImage(cover);
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
@@ -402,14 +402,9 @@ const Featured = () => {
                 </div>
 
                 <div className="project-image">
-                 // <a href={external ? external : github ? github : '#'}>
-                  //  <GatsbyImage image={image} alt={title} className="img" />
-                  {/* Render multiple images here */}
-                  {images && images.map((image, index) => (
-                    <a key={index} href={external || github || '#'}>
-                      <GatsbyImage image={getImage(image)} alt={`${title} image ${index + 1}`} className="img" />
+                  <a href={external ? external : github ? github : '#'}>
+                    <GatsbyImage image={image} alt={title} className="img" />
                   </a>
-                ))}
                 </div>
               </StyledProject>
             );
