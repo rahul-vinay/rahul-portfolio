@@ -314,16 +314,9 @@ const Featured = () => {
           node {
             frontmatter {
               title
-              cover {
-                childImageSharp {
-                  gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
-                }
-              }
+              cover
               tech
               github
-              external {
-                publicURL
-              }
               cta
             }
             html
@@ -339,10 +332,7 @@ const Featured = () => {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (prefersReducedMotion) {
-      return;
-    }
-
+    if (prefersReducedMotion) return;
     sr.reveal(revealTitle.current, srConfig());
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
   }, []);
@@ -357,23 +347,17 @@ const Featured = () => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, cta } = frontmatter;
-            const image = cover ? getImage(cover) : null;
+            const { title, tech, github, cover, cta } = frontmatter;
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
                 <div className="project-content">
                   <div>
                     <p className="project-overline">Featured Project</p>
-
                     <h3 className="project-title">
-                      <a href={external?.publicURL || github || '#'}>{title}</a>
+                      <a href={github || '#'}>{title}</a>
                     </h3>
-
-                    <div
-                      className="project-description"
-                      dangerouslySetInnerHTML={{ __html: html }}
-                    />
+                    <div className="project-description" dangerouslySetInnerHTML={{ __html: html }} />
 
                     {tech.length && (
                       <ul className="project-tech-list">
@@ -394,24 +378,15 @@ const Featured = () => {
                           <Icon name="GitHub" />
                         </a>
                       )}
-                      {external?.publicURL && !cta && (
-                        <a href={external.publicURL} aria-label="External Link" className="external">
-                          <Icon name="External" />
-                        </a>
-                      )}
                     </div>
                   </div>
                 </div>
 
-                <div className="project-image">
-                  <a href={external?.publicURL || github || '#'}>
-                    {image ? (
-                      <GatsbyImage image={image} alt={title} className="img" />
-                    ) : (
-                      <div className="img" style={{ backgroundColor: '#333', height: '100%' }} />
-                    )}
-                  </a>
-                </div>
+                {cover && (
+                  <div className="project-image">
+                    <img src={cover} alt={title} className="img" />
+                  </div>
+                )}
               </StyledProject>
             );
           })}
