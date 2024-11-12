@@ -1,9 +1,7 @@
 ---
 date: '1'
 title: 'Developer Salary Insights'
-images:
-  - './devsalaryinsights.jpg'
-  - './demo.png'
+cover: './devsalaryinsights.jpg'
 github: 'https:/github.com/rahul-vinay/DevSalaryInights'
 external: ''
 tech:
