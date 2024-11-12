@@ -314,7 +314,7 @@ const Featured = () => {
           node {
             frontmatter {
               title
-              cover {
+              images {
                 childImageSharp {
                   gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                 }
@@ -402,8 +402,11 @@ const Featured = () => {
                 </div>
 
                 <div className="project-image">
-                  <a href={external ? external : github ? github : '#'}>
-                    <GatsbyImage image={image} alt={title} className="img" />
+                 // <a href={external ? external : github ? github : '#'}>
+                  //  <GatsbyImage image={image} alt={title} className="img" />
+                  {images && images.map((image, index) => (
+                    <a key={index} href={external || github || '#'}>
+                      <GatsbyImage image={getImage(image)} alt={`${title} image ${index + 1}`} className="img" />
                   </a>
                 </div>
               </StyledProject>
