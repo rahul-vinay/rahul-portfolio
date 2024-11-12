@@ -166,26 +166,32 @@ const StyledProject = styled.li`
 `;
 
 const Projects = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      projects: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/projects/" } }
-        sort: { fields: [frontmatter___date], order: DESC }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              tech
-              github
-              external
+ const data = useStaticQuery(graphql`
+  {
+    featured: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/content/featured/" } }
+      sort: { fields: [frontmatter___date], order: ASC }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            cover {
+              childImageSharp {
+                gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+              }
             }
-            html
+            tech
+            github
+            external
+            cta
           }
+          html
         }
       }
     }
-  `);
+  }
+`);
 
   const [showMore, setShowMore] = useState(false);
   const revealTitle = useRef(null);
