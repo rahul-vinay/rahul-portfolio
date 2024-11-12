@@ -181,7 +181,9 @@ const Projects = () => {
               title
               tech
               github
-              external
+              external {
+              publicURL
+              }
             }
             html
           }
@@ -228,9 +230,9 @@ const Projects = () => {
                   <Icon name="GitHub" />
                 </a>
               )}
-              {external && (
+              {external && external.publicURL && (
                 <a
-                  href={external}
+                  href={external.publicURL}
                   aria-label="External Link"
                   className="external"
                   target="_blank"
@@ -242,7 +244,7 @@ const Projects = () => {
           </div>
 
           <h3 className="project-title">
-            <a href={external} target="_blank" rel="noreferrer">
+            <a href={external ? external.publicURL : '#'} target="_blank" rel="noreferrer">
               {title}
             </a>
           </h3>
