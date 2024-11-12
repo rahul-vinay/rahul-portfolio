@@ -2,7 +2,6 @@
 title: "ShowAttendAndTell: Neural Image Captioning"
 tech: ["Python", "PyTorch", "Deep Learning", "Attention Mechanism", "Computer Vision"]
 github: "https://github.com/rahul-vinay/ShowAttendAndTell"
-#external: "https://link-to-project-demo.com"
 showInProjects: true
 ---
 
