@@ -3,7 +3,6 @@ date: '2'
 title: 'SentimentLens'
 cover: './sentiment.jpg'
 github: 'https://github.com/rahul-vinay/SentimentLens'
-external: 
 tech:
   - Python
   - Keras
