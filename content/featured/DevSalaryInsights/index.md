@@ -3,7 +3,7 @@ date: '1'
 title: 'Developer Salary Insights'
 cover: './devsalaryinsights.png'
 github: 'https:/github.com/rahul-vinay/DevSalaryInights'
-#external:
+external:
 tech:
   - Python
   - Streamlit
