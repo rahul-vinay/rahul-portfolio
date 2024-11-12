@@ -2,7 +2,6 @@
 title: "Flask Weather App"
 tech: ["Python", "Flask",  "OpenWeatherMap API", "Web Development"]
 github: "https://github.com/rahul-vinay/flask-weather-app"
-#external: "https://link-to-project-demo.com"
 showInProjects: true
 ---
 
