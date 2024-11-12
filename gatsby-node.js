@@ -11,6 +11,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
   createTypes(`
     type MarkdownRemarkFrontmatter {
+      date: String
       cover: File @fileByRelativePath
       external: String
       cta: String
