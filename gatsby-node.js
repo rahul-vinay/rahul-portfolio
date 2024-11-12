@@ -13,6 +13,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     type MarkdownRemarkFrontmatter {
       date: String
       cover: File @fileByRelativePath
+      github: String
       external: String
       cta: String
       ios: String
