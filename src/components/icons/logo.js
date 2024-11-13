@@ -1,10 +1,11 @@
 import React from 'react';
-import logo from '../../images/logo.png'; // Path to your logo image
+import logo from '../../images/logo.png';
 
 const IconLogo = () => (
   <svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
     <title>Logo</title>
     <g>
+      {/* Hexagon polygon */}
       <polygon
         stroke="currentColor"
         strokeWidth="5"
@@ -13,7 +14,8 @@ const IconLogo = () => (
         points="50,5 11,27 11,72 50,95 89,73 89,28"
         fill="none"
       />
-      <foreignObject x="25" y="25" width="50" height="50">
+      {/* Logo image centered and scaled */}
+      <foreignObject x="20" y="20" width="60" height="60">
         <img
           src={logo}
           alt="Logo"
@@ -21,8 +23,8 @@ const IconLogo = () => (
             width: '100%',
             height: '100%',
             display: 'block',
-            objectFit: 'contain', // Ensures the logo fits within the polygon
-            transform: 'translate(-5%, -5%)', // Adjust positioning and scaling as needed
+            objectFit: 'contain',
+            transform: 'scale(1.1)', // Slightly increase scale to better fill the hexagon
           }}
         />
       </foreignObject>
