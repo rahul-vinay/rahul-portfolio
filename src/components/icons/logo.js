@@ -1,35 +1,27 @@
 import React from 'react';
-import logo from '../../images/logo.png';
+import logo from '../../images/logo.png'; // Adjusted path based on your folder structure
 
-const IconLogo = () => (
+const IconLoader = () => (
   <svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-    <title>Logo</title>
+    <title>Loader Logo</title>
     <g>
-      {/* Hexagon polygon */}
-      <polygon
+      <path
         stroke="currentColor"
         strokeWidth="5"
         strokeLinecap="round"
         strokeLinejoin="round"
-        points="50,5 11,27 11,72 50,95 89,73 89,28"
-        fill="none"
+        d="M 50, 5
+                  L 11, 27
+                  L 11, 72
+                  L 50, 95
+                  L 89, 73
+                  L 89, 28 z"
       />
-      {/* Logo image centered and scaled */}
-      <foreignObject x="20" y="20" width="60" height="60">
-        <img
-          src={logo}
-          alt="Logo"
-          style={{
-            width: '100%',
-            height: '100%',
-            display: 'block',
-            objectFit: 'contain',
-            transform: 'scale(1.1)', // Slightly increase scale to better fill the hexagon
-          }}
-        />
+      <foreignObject x="25" y="25" width="50" height="50">
+        <img src={logo} alt="Logo" style={{ width: '100%', height: '100%' }} />
       </foreignObject>
     </g>
   </svg>
 );
 
-export default IconLogo;
+export default IconLoader;
