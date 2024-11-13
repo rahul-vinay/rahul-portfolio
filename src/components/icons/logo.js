@@ -22,7 +22,7 @@ const IconLogo = () => (
             height: '100%',
             display: 'block',
             objectFit: 'contain', // Ensures the logo fits within the polygon
-            transform: 'translate(-10%, -10%) scale(0.8)', // Adjust positioning and scaling as needed
+            transform: 'translate(-10%, -10%) scale(1.0)', // Adjust positioning and scaling as needed
           }}
         />
       </foreignObject>
