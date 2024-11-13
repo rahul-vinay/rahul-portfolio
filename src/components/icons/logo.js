@@ -15,7 +15,7 @@ const IconLogo = () => (
           points="39 0 0 22 0 67 39 90 78 68 78 23"
         />
         {/* Centering the logo by adjusting x and y */}
-        <foreignObject x="10" y="15" width="60" height="60">
+        <foreignObject x="8" y="15" width="60" height="60">
           <img src={logo} alt="Logo" style={{ width: '100%', height: '100%' }} />
         </foreignObject>
       </g>
