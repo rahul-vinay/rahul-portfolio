@@ -5,9 +5,7 @@ company: "DuPont - Spectrum Plastics Group"
 location: "Hermann, USA"
 range: "May 2024 – Present"
 url: "https://www.dupont.com/"
-images:
-  - "./dupontimage.png"
-  - "./dupontimage2.png"
+images: "./dupontimage2.png"
 ---
 
 - Developed and optimized machine learning models in Python for data visualization and automation tasks, achieving a 10% reduction in data processing time.
