@@ -161,32 +161,50 @@ const StyledTabPanel = styled.div`
     color: var(--light-slate);
     font-family: var(--font-mono);
     font-size: var(--fz-xs);
+    
+  // existing styles
+  .job-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+  }
+
+  .job-images img {
+    max-width: 100%; // Ensures images fit within the panel width
+    border-radius: 8px;
+  }
+`;
   }
 `;
 
 const Jobs = () => {
   const data = useStaticQuery(graphql`
-    query {
-      jobs: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/jobs/" } }
-        sort: { fields: [frontmatter___date], order: DESC }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              company
-              location
-              range
-              url
-              images
+  query {
+    jobs: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/content/jobs/" } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            company
+            location
+            range
+            url
+            images {    // Assuming `images` is an array of objects with paths
+              childImageSharp {
+                gatsbyImageData(layout: CONSTRAINED, width: 500)
+              }
             }
-            html
           }
+          html
         }
       }
     }
-  `);
+  }
+`);
 
   const jobsData = data.jobs.edges;
 
@@ -204,19 +222,7 @@ const Jobs = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
   
-const StyledImagesContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 15px;
 
-  img {
-    width: 100px;
-    height: auto;
-    border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-`;
 
   const focusTab = () => {
     if (tabs.current[tabFocus]) {
@@ -313,15 +319,21 @@ const StyledImagesContainer = styled.div`
 
                   <div dangerouslySetInnerHTML={{ __html: html }} />
 
-                  {/* Render images for each job */}
-                  {images && images.length > 0 && (
-                    <StyledImagesContainer>
-                      {images.map((imgSrc, index) => (
-                        <img key={index} src={imgSrc} alt={`${company} project screenshot ${index + 1}`} />
-                      ))}
-                    </StyledImagesContainer>
-                  )}
-                </StyledTabPanel>
+                  {/* Render the images */}
+                <div className="job-images">
+                  {images && images.map((imageData, index) => {
+                    const image = getImage(imageData);
+                    return (
+                      <GatsbyImage
+                        key={index}
+                        image={image}
+                        alt={`Image for ${company}`}
+                        style={{ margin: '10px 0', borderRadius: '8px' }}
+                      />
+                    );
+                  })}
+                </div>
+              </StyledTabPanel>
               </CSSTransition>
             );
           })}
