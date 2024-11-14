@@ -7,7 +7,7 @@ range: "May 2024 – Present"
 url: "https://www.dupont.com/"
 images:
   - "src/images/dupontimage.png"
-  - "src/images/dupontimage2.png
+  - "src/images/dupontimage2.png"
 ---
 
 - Developed and optimized machine learning models in Python for data visualization and automation tasks, achieving a 10% reduction in data processing time.
