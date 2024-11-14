@@ -60,9 +60,8 @@ const Contact = () => {
       <h2 className="title">Get In Touch</h2>
 
       <p>
-        I’m always open to exciting new opportunities and collaborations! Whether you're interested in discussing potential job openings, a new project, or just want to say hi, 
-        feel free to reach out. 
-        Let’s make something amazing happen together!"
+        I’m always open to exciting new opportunities and collaborations! Whether you're interested in discussing potential job openings, 
+        a new project, or just want to say hi, feel free to reach out. Let’s make something amazing happen together!"
     
       </p>
 
