@@ -179,7 +179,7 @@ const StyledTabPanel = styled.div`
 `;
 
 const Jobs = () => {
- const data = useStaticQuery(graphql`
+const data = useStaticQuery(graphql`
   query {
     jobs: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/content/jobs/" } }
@@ -193,7 +193,7 @@ const Jobs = () => {
             location
             range
             url
-            images {
+            image {  
               childImageSharp {
                 gatsbyImageData(layout: CONSTRAINED, width: 500)
               }
@@ -263,7 +263,7 @@ const Jobs = () => {
     }
   };
 
- return (
+return (
   <StyledJobsSection id="jobs" ref={revealContainer}>
     <h2 className="numbered-heading">Where I’ve Worked</h2>
 
@@ -294,7 +294,8 @@ const Jobs = () => {
         {jobsData &&
           jobsData.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { title, url, company, range, images } = frontmatter;
+            const { title, url, company, range, image } = frontmatter;  // Update to image
+            const imageData = getImage(image);
 
             return (
               <CSSTransition key={i} in={activeTabId === i} timeout={250} classNames="fade">
@@ -318,20 +319,14 @@ const Jobs = () => {
                   <p className="range">{range}</p>
                   <div dangerouslySetInnerHTML={{ __html: html }} />
                 
-                  {/* Render the images */}
-                  <div className="job-images">
-                    {images && images.map((imageData, index) => {
-                      const image = getImage(imageData);
-                      return (
-                        <GatsbyImage
-                          key={index}
-                          image={image}
-                          alt={`Image for ${company}`}
-                          style={{ margin: '10px 0', borderRadius: '8px' }}
-                        />
-                      );
-                    })}
-                  </div>
+                  {/* Render the single image */}
+                  {imageData && (
+                    <GatsbyImage
+                      image={imageData}
+                      alt={`Image for ${company}`}
+                      style={{ margin: '10px 0', borderRadius: '8px' }}
+                    />
+                  )}
               </StyledTabPanel>
               </CSSTransition>
             );
@@ -340,5 +335,4 @@ const Jobs = () => {
     </div>
   </StyledJobsSection>
 );
-
 export default Jobs;
