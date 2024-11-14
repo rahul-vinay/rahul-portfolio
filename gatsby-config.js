@@ -16,7 +16,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-robots-txt`,
-    `gatsby-plugin-netlify`, // Missing comma added here
+     
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -56,13 +56,6 @@ module.exports = {
       options: {
         name: `projects`,
         path: `${__dirname}/content/projects`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'content',
-        path: `${__dirname}/content/jobs/`,
       },
     },
     {
