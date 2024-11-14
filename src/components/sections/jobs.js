@@ -161,50 +161,31 @@ const StyledTabPanel = styled.div`
     color: var(--light-slate);
     font-family: var(--font-mono);
     font-size: var(--fz-xs);
-    
-  // existing styles
-  .job-images {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 15px;
-  }
-
-  .job-images img {
-    max-width: 100%; // Ensures images fit within the panel width
-    border-radius: 8px;
-  }
-`;
   }
 `;
 
 const Jobs = () => {
-const data = useStaticQuery(graphql`
-  query {
-    jobs: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/content/jobs/" } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            title
-            company
-            location
-            range
-            url
-            image {  
-              childImageSharp {
-                gatsbyImageData(layout: CONSTRAINED, width: 500)
-              }
+  const data = useStaticQuery(graphql`
+    query {
+      jobs: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/jobs/" } }
+        sort: { fields: [frontmatter___date], order: DESC }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              title
+              company
+              location
+              range
+              url
             }
+            html
           }
-          html
         }
       }
     }
-  }
-`);
+  `);
 
   const jobsData = data.jobs.edges;
 
@@ -221,8 +202,6 @@ const data = useStaticQuery(graphql`
 
     sr.reveal(revealContainer.current, srConfig());
   }, []);
-  
-
 
   const focusTab = () => {
     if (tabs.current[tabFocus]) {
@@ -263,76 +242,69 @@ const data = useStaticQuery(graphql`
     }
   };
 
-return (
-  <StyledJobsSection id="jobs" ref={revealContainer}>
-    <h2 className="numbered-heading">Where I’ve Worked</h2>
+  return (
+    <StyledJobsSection id="jobs" ref={revealContainer}>
+      <h2 className="numbered-heading">Where I’ve Worked</h2>
 
-    <div className="inner">
-      <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={e => onKeyDown(e)}>
-        {jobsData &&
-          jobsData.map(({ node }, i) => {
-            const { company } = node.frontmatter;
-            return (
-              <StyledTabButton
-                key={i}
-                isActive={activeTabId === i}
-                onClick={() => setActiveTabId(i)}
-                ref={el => (tabs.current[i] = el)}
-                id={`tab-${i}`}
-                role="tab"
-                tabIndex={activeTabId === i ? '0' : '-1'}
-                aria-selected={activeTabId === i ? true : false}
-                aria-controls={`panel-${i}`}>
-                <span>{company}</span>
-              </StyledTabButton>
-            );
-          })}
-        <StyledHighlight activeTabId={activeTabId} />
-      </StyledTabList>
-
-      <StyledTabPanels>
-        {jobsData &&
-          jobsData.map(({ node }, i) => {
-            const { frontmatter, html } = node;
-            const { title, url, company, range, image } = frontmatter;  // Update to image
-            const imageData = getImage(image);
-
-            return (
-              <CSSTransition key={i} in={activeTabId === i} timeout={250} classNames="fade">
-               <StyledTabPanel
-                  id={`panel-${i}`}
-                  role="tabpanel"
+      <div className="inner">
+        <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={e => onKeyDown(e)}>
+          {jobsData &&
+            jobsData.map(({ node }, i) => {
+              const { company } = node.frontmatter;
+              return (
+                <StyledTabButton
+                  key={i}
+                  isActive={activeTabId === i}
+                  onClick={() => setActiveTabId(i)}
+                  ref={el => (tabs.current[i] = el)}
+                  id={`tab-${i}`}
+                  role="tab"
                   tabIndex={activeTabId === i ? '0' : '-1'}
-                  aria-labelledby={`tab-${i}`}
-                  aria-hidden={activeTabId !== i}
-                  hidden={activeTabId !== i}>
-                  <h3>
-                    <span>{title}</span>
-                    <span className="company">
-                      &nbsp;@&nbsp;
-                      <a href={url} className="inline-link">
-                        {company}
-                      </a>
-                    </span>
-                  </h3>
-                
-                  <p className="range">{range}</p>
-                  <div dangerouslySetInnerHTML={{ __html: html }} />
-                
-                  {/* Render the single image */}
-                  {imageData && (
-                    <GatsbyImage
-                      image={imageData}
-                      alt={`Image for ${company}`}
-                      style={{ margin: '10px 0', borderRadius: '8px' }}
-                    />
-                  )}
-              </StyledTabPanel>
-              </CSSTransition>
-            );
-          })}
-      </StyledTabPanels>
-    </div>
-  </StyledJobsSection>
-);
+                  aria-selected={activeTabId === i ? true : false}
+                  aria-controls={`panel-${i}`}>
+                  <span>{company}</span>
+                </StyledTabButton>
+              );
+            })}
+          <StyledHighlight activeTabId={activeTabId} />
+        </StyledTabList>
+
+        <StyledTabPanels>
+          {jobsData &&
+            jobsData.map(({ node }, i) => {
+              const { frontmatter, html } = node;
+              const { title, url, company, range } = frontmatter;
+
+              return (
+                <CSSTransition key={i} in={activeTabId === i} timeout={250} classNames="fade">
+                  <StyledTabPanel
+                    id={`panel-${i}`}
+                    role="tabpanel"
+                    tabIndex={activeTabId === i ? '0' : '-1'}
+                    aria-labelledby={`tab-${i}`}
+                    aria-hidden={activeTabId !== i}
+                    hidden={activeTabId !== i}>
+                    <h3>
+                      <span>{title}</span>
+                      <span className="company">
+                        &nbsp;@&nbsp;
+                        <a href={url} className="inline-link">
+                          {company}
+                        </a>
+                      </span>
+                    </h3>
+
+                    <p className="range">{range}</p>
+
+                    <div dangerouslySetInnerHTML={{ __html: html }} />
+                  </StyledTabPanel>
+                </CSSTransition>
+              );
+            })}
+        </StyledTabPanels>
+      </div>
+    </StyledJobsSection>
+  );
+};
+
 export default Jobs;
