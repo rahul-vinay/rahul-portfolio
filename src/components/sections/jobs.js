@@ -179,7 +179,7 @@ const StyledTabPanel = styled.div`
 `;
 
 const Jobs = () => {
-  const data = useStaticQuery(graphql`
+ const data = useStaticQuery(graphql`
   query {
     jobs: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/content/jobs/" } }
@@ -193,7 +193,7 @@ const Jobs = () => {
             location
             range
             url
-            images {    // Assuming `images` is an array of objects with paths
+            images {
               childImageSharp {
                 gatsbyImageData(layout: CONSTRAINED, width: 500)
               }
@@ -298,7 +298,7 @@ const Jobs = () => {
 
             return (
               <CSSTransition key={i} in={activeTabId === i} timeout={250} classNames="fade">
-                <StyledTabPanel
+               <StyledTabPanel
                   id={`panel-${i}`}
                   role="tabpanel"
                   tabIndex={activeTabId === i ? '0' : '-1'}
@@ -314,25 +314,24 @@ const Jobs = () => {
                       </a>
                     </span>
                   </h3>
-
+                
                   <p className="range">{range}</p>
-
                   <div dangerouslySetInnerHTML={{ __html: html }} />
-
+                
                   {/* Render the images */}
-                <div className="job-images">
-                  {images && images.map((imageData, index) => {
-                    const image = getImage(imageData);
-                    return (
-                      <GatsbyImage
-                        key={index}
-                        image={image}
-                        alt={`Image for ${company}`}
-                        style={{ margin: '10px 0', borderRadius: '8px' }}
-                      />
-                    );
-                  })}
-                </div>
+                  <div className="job-images">
+                    {images && images.map((imageData, index) => {
+                      const image = getImage(imageData);
+                      return (
+                        <GatsbyImage
+                          key={index}
+                          image={image}
+                          alt={`Image for ${company}`}
+                          style={{ margin: '10px 0', borderRadius: '8px' }}
+                        />
+                      );
+                    })}
+                  </div>
               </StyledTabPanel>
               </CSSTransition>
             );
