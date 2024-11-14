@@ -6,7 +6,7 @@ module.exports = {
     description:
       'MS in Computer Science | Passionate about AI',
     siteUrl: 'https://rahul-vinay.github.io', // No trailing slash allowed!
-    //image: '/og.png', // Path to your image you placed in the 'static' folder
+    image: '/og.png', // Path to your image you placed in the 'static' folder
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
